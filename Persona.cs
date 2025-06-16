@@ -10,19 +10,32 @@ namespace POO_PabRam_YT
     {
         public string Cedula { get; set; }
         public string Nombre { get; set; }
-        public string Direccion { get; set; }
-        
-        public Persona(string cedula, string nombre, string direccion) {
+
+        public List<String> direcciones;
+        public Persona(string cedula, string nombre) {
             Cedula = cedula;
             Nombre = nombre;
-            Direccion = direccion;
+            direcciones = new List<String>();
+        }
+
+        public void AgregarDirección(string direccion)
+        {
+           direcciones.Add(direccion);
+        }
+
+        public void MostrarDirecciones()
+        {
+            for (int i = 0; i < direcciones.Count; i++)
+            {
+                Console.WriteLine($"Dirección {i+1}: {direcciones[i]}");
+            }
         }
         public void MostrarDatos()
         {
             Console.WriteLine("Datos de la persona: ");
             Console.WriteLine("Nombre: " + this.Nombre);
             Console.WriteLine("Cédula: " + this.Cedula);
-            Console.WriteLine("Dirección: " + this.Direccion);
+            MostrarDirecciones();
         }
     }
 }

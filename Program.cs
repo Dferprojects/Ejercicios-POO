@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.ComponentModel.Design;
 using System.Linq;
 using System.Security.Cryptography;
@@ -31,10 +30,23 @@ namespace POO_PabRam_YT
             string nombre = Console.ReadLine();
             Console.WriteLine("Ingrese su cédula:");
             string cedula = Console.ReadLine();
-            Console.WriteLine("Ingrese una dirección: ");
-            string direccion = Console.ReadLine();
+            Console.WriteLine("Cuántas direcciones desea agregar?");
+            int cantidad = int.Parse(Console.ReadLine());
             
-            Persona p1 = new Persona(cedula, nombre, direccion);
+            Persona p1 = new Persona(cedula, nombre);
+            if (cantidad > 1)
+            {
+                for (int i = 0; i < cantidad; i++)
+                {
+                    Console.WriteLine($"Ingrese la {i+1} dirección: ");
+                    p1.AgregarDirección(Console.ReadLine());
+                }
+            }
+            else {
+                Console.WriteLine("Ingrese la dirección");
+                p1.AgregarDirección(Console.ReadLine());
+            }
+            
             Console.WriteLine("------- ------- -------");
             p1.MostrarDatos();
         }
